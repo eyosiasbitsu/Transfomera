@@ -1,4 +1,3 @@
-cat << EOF > README.md
 # Transformer Health Monitoring System
 
 This project is a web application for monitoring the health of transformers. It includes a frontend built with React and a backend built with Node.js and Express. The system allows technicians to log in, view assigned transformers, and manage their details. Admins can manage users, transformers, and assignments.
