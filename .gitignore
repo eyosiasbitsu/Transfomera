@@ -1,7 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+# Ignore node_modules in frontend
+frontend/node_modules/
+
+# Ignore node_modules in backend
+backend/node_modules/
+
+# dependencies
 /.pnp
 .pnp.js
 
