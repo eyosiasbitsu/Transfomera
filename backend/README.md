@@ -1,4 +1,4 @@
-echo "# Transformer Health Monitoring System - Backend
+# Transformer Health Monitoring System - Backend
 
 This folder contains the backend code for the Transformer Health Monitoring System. It is built with Node.js and Express.
 
