@@ -20,8 +20,6 @@ const getTechnicianTransformers = async (req, res) => {
   };
 
 async function addSensorData(req, res) {
-  res.status(200).json({ message: "Sensor data added successfully."});
-  
   try {
     // Extract sensorId from URL parameters and raw sensor data from the request body
     const { sensorId } = req.params;
@@ -57,7 +55,7 @@ const registerTransformer = async (req, res) => {
         const newTransformer = new Transformer({
             city,
             streetAddress,
-            sensorId,
+            censorId,
             location: {
                 type: 'Point',
                 coordinates: [longitude, latitude] // Assuming longitude comes first
