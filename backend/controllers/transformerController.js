@@ -1,6 +1,7 @@
 const Transformer = require('../models/Transformer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Sensor = require('./models/Sensor');
 
 const getTechnicianTransformers = async (req, res) => {
     try {
@@ -18,6 +19,36 @@ const getTechnicianTransformers = async (req, res) => {
     }
   };
 
+async function addSensorData(req, res) {
+  res.status(200).json({ message: "Sensor data added successfully."});
+  
+  try {
+    // Extract sensorId from URL parameters and raw sensor data from the request body
+    const { sensorId } = req.params;
+    const rawSensorData = req.body;
+
+    // Create and save the new Sensor data document
+    const newSensorData = new Sensor(rawSensorData);
+    const savedSensorData = await newSensorData.save();
+
+    // Find the corresponding Transformer and add the ID of the new Sensor data to its sensorData array
+    const updatedTransformer = await Transformer.findOneAndUpdate(
+      { sensorId: sensorId }, // Find the transformer by sensorId
+      { $push: { sensorData: savedSensorData._id } }, // Add the new Sensor data ID to the sensorData array
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedTransformer) {
+      return res.status(404).send({ message: "Transformer not found." });
+    }
+
+    // Successfully updated the transformer with new sensor data
+    res.status(200).json({ message: "Sensor data added successfully.", updatedTransformer });
+  } catch (error) {
+    console.error('Error adding sensor data:', error);
+    res.status(500).send({ message: "Error adding sensor data." });
+  }
+}
 const registerTransformer = async (req, res) => {
     try {
         const { city, streetAddress, censorId, healthPercentile, registeredBy, latitude, longitude } = req.body;
@@ -26,7 +57,7 @@ const registerTransformer = async (req, res) => {
         const newTransformer = new Transformer({
             city,
             streetAddress,
-            censorId,
+            sensorId,
             location: {
                 type: 'Point',
                 coordinates: [longitude, latitude] // Assuming longitude comes first
@@ -131,5 +162,6 @@ module.exports = {
     getTransformerById, 
     deleteTransformerById,
     updateTransformerById,
-    getTransformers
+    getTransformers,
+    addSensorData
 };

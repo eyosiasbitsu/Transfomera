@@ -1,40 +1,45 @@
 // Transformer.js
 const mongoose = require('mongoose');
 
-// The properties are to change based on the UI and schema
 const transformerSchema = new mongoose.Schema({
-  city : { 
-    type: String, 
+  city: {
+    type: String,
     required: true
   },
-  streetAdress : { 
-    type: String, 
+  streetAddress: { // Corrected the spelling of 'streetAddress'
+    type: String,
     required: true
   },
-  censorId : { 
-    type: String, 
-    required: true 
-  }, // we get it from req.body
+  sensorId: { // Assuming 'censorId' is correct, though it might be meant to be 'sensorId'
+    type: String,
+    required: true
+  },
   location: {
     type: { type: String },
     coordinates: []
-  }, // we get it from req.body
-  healthPercentile: { 
-    type: Number, 
-    required: true 
-  }, // we don't receive when being registered because we get this data from influxDB and the ML model
-  installationDate : {
-    type:Date
-  }, // The day the tranformer
-  assignedTechnician : { 
-    type: Object 
   },
-  registeredBy : { 
-    type : Object, 
+  healthPercentile: {
+    type: Number,
     required: true
   },
-});
+  installationDate: {
+    type: Date
+  },
+  assignedTechnician: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  registeredBy: {
+    type: Object,
+    required: true
+  },
 
-transformerSchema.index({ location: '2dsphere' }); // Enable geospatial indexing
+  sensorData: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Sensor'
+    }
+  ] // Define sensorData as an array of sensorDataSchema
+});
 
 module.exports = mongoose.model('Transformer', transformerSchema);
