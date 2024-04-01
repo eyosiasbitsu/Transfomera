@@ -1,7 +1,7 @@
 const Transformer = require('../models/Transformer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Sensor = require('./models/Sensor');
+const Sensor = require('../models/Sensor');
 
 const getTechnicianTransformers = async (req, res) => {
     try {
