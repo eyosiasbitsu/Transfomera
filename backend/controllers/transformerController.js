@@ -51,7 +51,6 @@ async function addSensorData(req, res) {
 const registerTransformer = async (req, res) => {
     try {
         const { city, streetAddress, censorId, healthPercentile, registeredBy, latitude, longitude } = req.body;
-
         // Create a new transformer
         const newTransformer = new Transformer({
             city,
