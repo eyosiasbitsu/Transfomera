@@ -47,6 +47,7 @@ async function addSensorData(req, res) {
     res.status(500).send({ message: "Error adding sensor data." });
   }
 }
+
 const registerTransformer = async (req, res) => {
     try {
         const { city, streetAddress, censorId, healthPercentile, registeredBy, latitude, longitude } = req.body;
