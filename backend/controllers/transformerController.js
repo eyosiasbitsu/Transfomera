@@ -21,32 +21,32 @@ const getTechnicianTransformers = async (req, res) => {
 
 const addSensorData = async (req, res) => {
   res.status(200).send({ message: "Sensor data stored successfully" });
-  try {
-    // Extract sensorId from URL parameters and raw sensor data from the request body
-    const { sensorId } = req.params;
-    const rawSensorData = req.body;
+  // try {
+  //   // Extract sensorId from URL parameters and raw sensor data from the request body
+  //   const { sensorId } = req.params;
+  //   const rawSensorData = req.body;
 
-    // Create and save the new Sensor data document
-    const newSensorData = new Sensor(rawSensorData);
-    const savedSensorData = await newSensorData.save();
+  //   // Create and save the new Sensor data document
+  //   const newSensorData = new Sensor(rawSensorData);
+  //   const savedSensorData = await newSensorData.save();
 
-    // Find the corresponding Transformer and add the ID of the new Sensor data to its sensorData array
-    const updatedTransformer = await Transformer.findOneAndUpdate(
-      { sensorId: sensorId }, // Find the transformer by sensorId
-      { $push: { sensorData: savedSensorData._id } }, // Add the new Sensor data ID to the sensorData array
-      { new: true } // Return the updated document
-    );
+  //   // Find the corresponding Transformer and add the ID of the new Sensor data to its sensorData array
+  //   const updatedTransformer = await Transformer.findOneAndUpdate(
+  //     { sensorId: sensorId }, // Find the transformer by sensorId
+  //     { $push: { sensorData: savedSensorData._id } }, // Add the new Sensor data ID to the sensorData array
+  //     { new: true } // Return the updated document
+  //   );
 
-    if (!updatedTransformer) {
-      return res.status(404).send({ message: "Transformer not found." });
-    }
+  //   if (!updatedTransformer) {
+  //     return res.status(404).send({ message: "Transformer not found." });
+  //   }
 
-    // Successfully updated the transformer with new sensor data
-    res.status(200).json({ message: "Sensor data added successfully.", updatedTransformer });
-  } catch (error) {
-    console.error('Error adding sensor data:', error);
-    res.status(500).send({ message: "Error adding sensor data." });
-  }
+  //   // Successfully updated the transformer with new sensor data
+  //   res.status(200).json({ message: "Sensor data added successfully.", updatedTransformer });
+  // } catch (error) {
+  //   console.error('Error adding sensor data:', error);
+  //   res.status(500).send({ message: "Error adding sensor data." });
+  // }
 }
 
 const registerTransformer = async (req, res) => {
