@@ -6,6 +6,7 @@ const sensorDataSchema = new mongoose.Schema({
   current: String,
   oilLevel: String,
   date: Date,
+  // How about health percentile?
 }, { _id: false }); // You may choose to include '_id' depending on whether you want to reference individual sensor data entries.
 
 // Create the model from the schema
