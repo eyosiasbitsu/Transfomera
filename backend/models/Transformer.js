@@ -1,4 +1,5 @@
 // Transformer.js
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
 const transformerSchema = new mongoose.Schema({
@@ -30,7 +31,7 @@ const transformerSchema = new mongoose.Schema({
     ref: 'User'
   },
   registeredBy: {
-    type: Object,
+    type: ObjectId,
     required: true
   },
 

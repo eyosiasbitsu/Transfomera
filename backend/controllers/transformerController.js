@@ -2,6 +2,7 @@ const Transformer = require('../models/Transformer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Sensor = require('../models/Sensor');
+const User = require('../models/User');
 
 const addSensorData = async (req, res) => {
     try {
@@ -34,7 +35,13 @@ const addSensorData = async (req, res) => {
 
 const registerTransformer = async (req, res) => {
     try {
-        const { city, streetAddress, censorId, healthPercentile, registeredBy, latitude, longitude } = req.body;
+        const { city, streetAddress, sensorId, latitude, longitude } = req.body;
+
+        // Ensure that the authMiddleware is called before this function
+        // so req.user is populated
+        if (!req.user) {
+            return res.status(401).json({ message: 'Unauthorized. Please login.' });
+        }
 
         // Create a new transformer
         const newTransformer = new Transformer({
@@ -48,7 +55,7 @@ const registerTransformer = async (req, res) => {
             healthPercentile: null, // Health percentile is not provided during registration
             installationDate: new Date(),
             assignedTechnician: null, // Initially unassigned
-            registeredBy
+            registeredBy: req.user._id, // Use the _id of the logged-in user
         });
 
         await newTransformer.save();
@@ -56,7 +63,7 @@ const registerTransformer = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Failed to register transformer' });
-    }
+    }l
 };
 
 const getTransformerById = async (req, res) => {
