@@ -8,7 +8,8 @@ const { registerTransformer, getTransformerById, deleteTransformerById, updateTr
 const authMiddleware = require('../middleware/authMiddleware');
 
 // Route to get list of assigned transformers
-router.post('/', addSensorData);
+router.post('/:id', addSensorData);
+router.post('/', authMiddleware, registerTransformer);
 router.get('/:id', authMiddleware, getTransformerById);
 router.delete('/:id', authMiddleware, deleteTransformerById);
 router.put('/:id', authMiddleware, updateTransformerById);

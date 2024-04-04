@@ -63,7 +63,7 @@ const registerTransformer = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Failed to register transformer' });
-    }l
+    }
 };
 
 const getTransformerById = async (req, res) => {
