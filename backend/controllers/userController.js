@@ -2,18 +2,9 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
+var postmark = require("postmark");
 
-// Create a transporter object using the default SMTP transport
-const transporter = nodemailer.createTransport({
-  host: 'aspmx.l.google.com', // Your SMTP host
-  port: 465, // Your SMTP port
-  secure: true, // true for 465, false for other ports
-  auth: {
-    user: 'eyosiasbitsu@gmail.com', // Your email address
-    pass: 'Fitsa394685368521+', // Your email password
-  },
-});
+
 
 // Registration controller
 const registerUser = async (req, res) => {
@@ -33,21 +24,18 @@ const registerUser = async (req, res) => {
       const newUser = new User({ fullname, role, password: hashedPassword, email });
       await newUser.save();
 
-      // Send email to the registered user
-      await transporter.sendMail({
-        from: 'eyosiasbitsu@gmail.com',
-        to: email,
-        subject: 'Registration Successful',
-        html: `
-          <h1>Welcome to our platform!</h1>
-          <p>You have successfully registered.</p>
-          <p>Your login credentials are:</p>
-          <p>Email: ${email}</p>
-          <p>Password: ${password}</p>
-          <p>Please <a href="https://www.youtube.com/watch?v=zodHltkgK1w&ab_channel=PlayingEpicd">click here</a> to login</p>
-        `,
-      });
+      // Send an email:
+      var client = new postmark.ServerClient("a1d20d26-ad4f-44f4-95cc-4fe0cac38584");
 
+      client.sendEmail({
+        "From": "fitsum@a2sv.org",
+        "To": email,
+        "Subject": "Registration Successful",
+        "HtmlBody": "<strong>Welcome to our platform! You have successfully registered.</strong>",
+        "TextBody": "Welcome to our platform!",
+        "MessageStream": "transformera"
+      });
+      
       res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
       res.status(500).json({ message: error.message });
