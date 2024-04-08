@@ -15,7 +15,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
 // Registration controller
 const registerUser = async (req, res) => {
     try {
@@ -51,7 +50,7 @@ const registerUser = async (req, res) => {
 
       res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
-      res.status(500).json({ message: 'Failed to register user' });
+      res.status(500).json({ message: error.message });
     }
   };  
 
