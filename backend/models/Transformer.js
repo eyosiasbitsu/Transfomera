@@ -21,7 +21,6 @@ const transformerSchema = new mongoose.Schema({
   },
   healthPercentile: {
     type: Number,
-    required: true
   },
   installationDate: {
     type: Date
