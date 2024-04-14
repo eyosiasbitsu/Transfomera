@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 var postmark = require("postmark");
 
-
-
 // Registration controller
 const registerUser = async (req, res) => {
     try {

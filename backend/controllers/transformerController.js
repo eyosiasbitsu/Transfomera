@@ -62,7 +62,7 @@ const registerTransformer = async (req, res) => {
         res.status(201).json({ message: 'Transformer registered successfully', transformer: newTransformer });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Failed to register transformer' });
+        res.status(500).json({ message: error.message });
     }
 };
 
