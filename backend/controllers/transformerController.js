@@ -16,11 +16,9 @@ const addSensorData = async (req, res) => {
       const savedSensorData = await newSensorData.save();
 
       // Find the corresponding Transformer and add the ID of the new Sensor data to its sensorData array
-      const updatedTransformer = await Transformer.findOneAndUpdate(
-        { sensorId: sensorId }, // Find the transformer by sensorId
-        { $push: { sensorData: savedSensorData._id } }, // Add the new Sensor data ID to the sensorData array
-        { new: true } // Return the updated document
-      );
+      const updatedTransformer = await Transformer.findOne( { sensorId: sensorId } );
+
+      await updatedTransformer.sensorData.push(savedSensorData._id);
 
       if (!updatedTransformer) {
         return res.status(404).send({ message: "Transformer not found." });
