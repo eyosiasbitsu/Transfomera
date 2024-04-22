@@ -28,8 +28,7 @@ const addSensorData = async (req, res) => {
       // Successfully updated the transformer with new sensor data
       res.status(200).json({ message: "Sensor data added successfully.", updatedTransformer });
     } catch (error) {
-      console.error('Error adding sensor data:', error);
-      res.status(500).send({ message: "Error adding sensor data." });
+      res.status(500).send({ message: error.message });
     }
 }
 
@@ -59,9 +58,8 @@ const registerTransformer = async (req, res) => {
         });
 
         await newTransformer.save();
-        res.status(201).json({ message: 'Transformer registered successfully', transformer: newTransformer });
+        res.status(201).json({ message: 'Transformer registered successfully'});
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: error.message });
     }
 };
@@ -77,8 +75,7 @@ const getTransformerById = async (req, res) => {
 
         res.status(200).json({ transformer });
       } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Failed to retrieve transformer details' });
+        res.status(500).json({ message: error.message });
       }
 }
 
@@ -98,11 +95,10 @@ const deleteTransformerById  = async (req, res) => {
         await Transformer.findByIdAndDelete(transformerId);
         res.status(200).json({ message: 'Transformer deleted successfully' });
       } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Failed to delete transformer' });
+        res.status(500).json({ message: error.message });
       }
 }
-
+ 
 const updateTransformerById = async (req, res) => {
     try {
         const transformerId = req.params.id;
@@ -126,8 +122,7 @@ const updateTransformerById = async (req, res) => {
         await transformer.save();
         res.status(200).json({ message: 'Transformer updated successfully' });
       } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Failed to update transformer' });
+        res.status(500).json({ message: error.message });
     }
 }
 
@@ -141,8 +136,7 @@ const getTransformers = async (req, res) => {
   
       res.status(200).json(transformers);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Failed to fetch transformers' });
+      res.status(500).json({ message: error.message });
     }
 };
 
