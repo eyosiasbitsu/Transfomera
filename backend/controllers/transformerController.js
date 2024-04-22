@@ -5,6 +5,7 @@ const Sensor = require('../models/Sensor');
 const User = require('../models/User');
 
 const addSensorData = async (req, res) => {
+    console.log(req.params.id);
     try {
       // Extract sensorId from URL parameters and raw sensor data from the request body
       const { sensorId } = req.params;
