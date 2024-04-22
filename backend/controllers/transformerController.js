@@ -35,7 +35,6 @@ const addSensorData = async (req, res) => {
 const registerTransformer = async (req, res) => {
     try {
         const { city, streetAddress, sensorId, latitude, longitude } = req.body;
-        console.log(req.body);
         // Ensure that the authMiddleware is called before this function
         // so req.user is populated
         if (!req.user) {
