@@ -11,6 +11,7 @@ const addSensorData = async (req, res) => {
       const { sensorId } = req.params;
       const rawSensorData = req.body;
 
+      console.log(sensorId);
       // Create and save the new Sensor data document
       const newSensorData = new Sensor(rawSensorData);
       const savedSensorData = await newSensorData.save();
