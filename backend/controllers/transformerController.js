@@ -8,7 +8,7 @@ const addSensorData = async (req, res) => {
     console.log(req.params.id);
     try {
       // Extract sensorId from URL parameters and raw sensor data from the request body
-      const { sensorId } = req.params;
+      const { sensorId } = req.params.id;
       const rawSensorData = req.body;
 
       console.log(sensorId);
