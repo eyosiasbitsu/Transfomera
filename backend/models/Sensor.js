@@ -7,7 +7,7 @@ const sensorDataSchema = new mongoose.Schema({
   oilLevel: String,
   date: Date,
   // How about health percentile?
-}, { _id: false }); // You may choose to include '_id' depending on whether you want to reference individual sensor data entries.
+}); // You may choose to include '_id' depending on whether you want to reference individual sensor data entries.
 
 // Create the model from the schema
 const SensorData = mongoose.model('SensorData', sensorDataSchema);
