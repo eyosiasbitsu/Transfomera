@@ -16,8 +16,15 @@ const transformerSchema = new mongoose.Schema({
     required: true
   },
   location: {
-    type: { type: String },
-    coordinates: []
+    type: {
+      type: String, // Don't forget the type of the GeoJSON type
+      enum: ['Point'], // 'location.type' must be 'Point'
+      required: true
+    },
+    coordinates: {
+      type: [Number], // Array of numbers for Longitude (first) and Latitude (second)
+      required: true
+    }
   },
   healthPercentile: {
     type: Number,
