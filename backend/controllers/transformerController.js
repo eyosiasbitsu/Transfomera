@@ -45,10 +45,6 @@ const registerTransformer = async (req, res) => {
             city,
             streetAddress,
             sensorId,
-            location: {
-                type: 'Point',
-                coordinates: [parseFloat(longitude), parseFloat(latitude)] // Assuming longitude comes first
-            },
             healthPercentile: null, // Health percentile is not provided during registration
             installationDate: new Date(),
             assignedTechnician: null, // Initially unassigned
