@@ -39,7 +39,7 @@ const registerTransformer = async (req, res) => {
         if (!req.user) {
             return res.status(401).json({ message: 'Unauthorized. Please login.' });
         }
-        console.log(req.user);
+        console.log(req.user._id);
         // Create a new transformer
         const newTransformer = new Transformer({
             city,
