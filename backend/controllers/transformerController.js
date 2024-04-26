@@ -39,7 +39,7 @@ const registerTransformer = async (req, res) => {
         if (!req.user) {
             return res.status(401).json({ message: 'Unauthorized. Please login.' });
         }
-
+        console.log(req.user);
         // Create a new transformer
         const newTransformer = new Transformer({
             city,
@@ -57,6 +57,7 @@ const registerTransformer = async (req, res) => {
         await newTransformer.save();
         res.status(201).json({ message: 'Transformer registered successfully'});
     } catch (error) {
+
         res.status(500).json({ message: error.message });
     }
 };
