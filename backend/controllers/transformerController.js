@@ -21,7 +21,8 @@ const addSensorData = async (req, res) => {
         return res.status(404).send({ message: "Transformer not found." });
       }
 
-      await updatedTransformer.sensorData.push(savedSensorData.id);
+      updatedTransformer.sensorData.push(savedSensorData.id);
+      await updatedTransformer.save(); 
       // Successfully updated the transformer with new sensor data
       res.status(200).json({ message: "Sensor data added successfully.", updatedTransformer });
     } catch (error) {
