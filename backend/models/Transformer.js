@@ -31,10 +31,6 @@ const transformerSchema = new mongoose.Schema({
   },
 
   sensorData: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Sensor'
-    }
   ] // Define sensorData as an array of sensorDataSchema
 });
 
