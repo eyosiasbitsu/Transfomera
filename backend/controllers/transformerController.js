@@ -5,13 +5,11 @@ const Sensor = require('../models/Sensor');
 const User = require('../models/User');
 
 const addSensorData = async (req, res) => {
-    console.log(req.params.id);
     try {
       // Extract sensorId from URL parameters and raw sensor data from the request body
       const sensorId = req.params.id;
       const rawSensorData = req.body;
 
-      console.log(sensorId);
       // Create and save the new Sensor data document
       const newSensorData = new Sensor(rawSensorData);
       const savedSensorData = await newSensorData.save();
@@ -23,7 +21,7 @@ const addSensorData = async (req, res) => {
         return res.status(404).send({ message: "Transformer not found." });
       }
 
-      await updatedTransformer.sensorData.push(savedSensorData._id);
+      await updatedTransformer.sensorData.push(savedSensorData.id);
       // Successfully updated the transformer with new sensor data
       res.status(200).json({ message: "Sensor data added successfully.", updatedTransformer });
     } catch (error) {
