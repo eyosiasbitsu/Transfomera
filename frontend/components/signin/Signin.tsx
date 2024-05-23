@@ -22,8 +22,8 @@ const Signin = () => {
     };
     try {
       const response = await loginUser(userCredential).unwrap();
-      console.log("rr", response);
-
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.userDetail));
       router.push("/");
       toast.success("loged in successfully");
     } catch (error) {

@@ -5,5 +5,11 @@ export interface SignInCredential {
 
 export interface userSignInReturn {
     token: string,
-    id: string
+    userDetail: {
+		_id: string,
+		fullname: string,
+		role: string,
+		password: string,
+		email: string,
+	},
 }
