@@ -1,9 +1,10 @@
+import TechnicianHome from '@/components/Technician/Home/TechnicianHome';
 import React from 'react'
 
-const page = () => {
+const TechnicianHomePage = () => {
   return (
-    <div>page</div>
+    <TechnicianHome />
   )
 }
 
-export default page
+export default TechnicianHomePage;
