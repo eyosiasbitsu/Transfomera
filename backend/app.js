@@ -3,6 +3,7 @@
 const express = require('express');
 const connectDB = require('./config/database'); // Assuming this is your MongoDB connection configuration
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
 const transformerRoutes = require('./routes/transformerRoutes');
@@ -15,10 +16,9 @@ connectDB();
 
 const app = express();
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+app.use(cors());
 
-// Other middleware and routes setup...
+app.use(express.json());
 
 // Start the server
 const PORT = process.env.PORT || 8000;
