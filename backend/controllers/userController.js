@@ -2,6 +2,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+const Transformer = require('../models/Transformer');
 var postmark = require("postmark");
 
 // Registration controller
@@ -57,4 +59,26 @@ const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Failed to authenticate' });
   }
 };
-module.exports = { registerUser, loginUser };
+
+const userDetail = async () => {
+  try {
+    const userId = req.params.id;
+
+    const userData = await User.findById(userId);
+    const registeredTransformers = await Transformer.find({ registeredBy: userId });
+
+    if (!userData) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    if (registeredTransformers.length === 0) {
+      return res.status(404).send({ message: "You didn't register any transformers yet :(" });
+    }
+
+    res.status(200).json({ message: "Data retrieved successfully", userData, registeredTransformers });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
+module.exports = { registerUser, loginUser, userDetail };
