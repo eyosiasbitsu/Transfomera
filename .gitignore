@@ -7,6 +7,8 @@ frontend/node_modules/
 # Ignore node_modules in backend
 backend/node_modules/
 
+chatbot/node_modules/
+
 # dependencies
 /.pnp
 .pnp.js

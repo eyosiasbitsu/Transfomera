@@ -1,4 +1,4 @@
-// Transformer.js
+
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
@@ -7,11 +7,11 @@ const transformerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  streetAddress: { // Corrected the spelling of 'streetAddress'
+  streetAddress: {
     type: String,
     required: true
   },
-  sensorId: { // Assuming 'censorId' is correct, though it might be meant to be 'sensorId'
+  sensorId: { 
     type: String,
     required: true
   },
@@ -29,13 +29,12 @@ const transformerSchema = new mongoose.Schema({
     type: ObjectId,
     required: true
   },
-
   sensorData: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Sensor'
     }
-  ] // Define sensorData as an array of sensorDataSchema
+  ]
 });
 
 module.exports = mongoose.model('Transformer', transformerSchema);
