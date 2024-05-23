@@ -53,7 +53,9 @@ const loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id, email: user.email, role: user.role }, process.env.JWT_SECRET);
-    res.status(200).json({ token });
+    const userId = user._id;
+
+    res.status(200).json({ token, 'userId': userId});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Failed to authenticate' });
