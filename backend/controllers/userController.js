@@ -61,7 +61,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-const userDetail = async () => {
+const userDetail = async (req, res) => {
   try {
     const userId = req.params.id;
 
