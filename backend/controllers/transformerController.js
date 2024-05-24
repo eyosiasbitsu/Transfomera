@@ -121,17 +121,31 @@ const updateTransformerById = async (req, res) => {
 }
 
 const getTransformers = async (req, res) => {
-    try {
+  try {
+      const { page = 1, limit = 10, sort = 'asc' } = req.query; // Default values for page, limit, and sort
+
+      // Convert page and limit to numbers
+      const pageNumber = parseInt(page, 10);
+      const limitNumber = parseInt(limit, 10);
+
+      // Calculate the number of documents to skip
+      const skip = (pageNumber - 1) * limitNumber;
+
+      // Fetch the transformers with pagination and sorting
+      const transformers = await Transformer.find()
+          .sort({ healthPercentile: sort === 'asc' ? 1 : -1 })
+          .skip(skip)
+          .limit(limitNumber);
+
       // Check if there are any transformers
-      const transformers = await Transformer.find();
       if (transformers.length === 0) {
-        return res.status(404).json({ message: 'No transformers found' });
+          return res.status(404).json({ message: 'No transformers found' });
       }
-  
+
       res.status(200).json(transformers);
-    } catch (error) {
+  } catch (error) {
       res.status(500).json({ message: error.message });
-    }
+  }
 };
 
 module.exports = {  

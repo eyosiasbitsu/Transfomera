@@ -82,4 +82,37 @@ const userDetail = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser, userDetail };
+// work on password reset
+const passwordReset = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { currentPassword, newPassword } = req.body;
+
+    // Retrieve user data by ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Validate current password
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Current password is incorrect' });
+    }
+
+    // Hash the new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // Update the user's password in the database
+    user.password = hashedPassword;
+    await user.save();
+
+    // Respond with a success message
+    res.status(200).json({ message: 'Password updated successfully' });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+}
+
+module.exports = { registerUser, loginUser, userDetail, passwordReset };
