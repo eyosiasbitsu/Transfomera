@@ -1,21 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import registerIcon from "@/public/images/Technician/arrow-square-right.svg";
 import starIcon from "@/public/images/Technician/Star Icon.svg";
 import userAvatar from "@/public/images/Technician/Avatar.svg";
-import CircularProgressBar from "./CircularProgressBar";
+import CircularProgressBar from "../Home/CircularProgressBar";
+import PasswordAndSecurity from "./PasswordAndSecurity";
 import Logout from "../Logout";
-import Link from "next/link";
 import { useGetTechnicianTransformersQuery } from "@/app/GlobalRedux/Features/transormers/transormersAPI";
 import TransformersListSkeleton from "../Loading/TransformersListSkeleton";
 
-const TechnicianHome = () => {
-    const user = JSON.parse(window.localStorage.getItem("userT") as string);
-    const { data, isLoading, isFetching, isError, isSuccess } =
+const TechnicianProfile = () => {
+  const user = JSON.parse(window.localStorage.getItem("userT") as string);
+  const { data, isLoading, isFetching, isError, isSuccess } =
     useGetTechnicianTransformersQuery(user._id);
-
   // const transformers = [
   //   {
   //     _id: {
@@ -75,7 +74,8 @@ const TechnicianHome = () => {
   //     __v: 12,
   //   },
   // ];
-
+    
+  
   return (
     <div className="flex gap-8 mt-8 ml-4">
       <div className="w-[70%]">
@@ -110,7 +110,7 @@ const TechnicianHome = () => {
             </div>
             {data.transformer.length === 0 && (
               <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
-                No registered transformers yet!
+                You haven't registered transformers yet!
               </p>
             )}
             {data.transformer.length > 0 &&
@@ -146,15 +146,14 @@ const TechnicianHome = () => {
       <div className="w-[30%] bg-[#F6F2DD] flex flex-col items-center gap-4 pb-20">
         <div className="flex flex-col gap-2">
           <Image src={userAvatar} alt="User Avatar" />
-          <Link href='/technician/profile' className="text-2xl font-bold">{user.fullname}</Link>
+          <p className="text-2xl font-bold">{user.fullname}</p>
           <p className="text-[#979CA5]">Senior Technician</p>
           <Logout />
         </div>
-        {/* Place for chatbot */}
-        <p className="text-3xl">Chat bot</p>
+        <PasswordAndSecurity userId={user._id} />
       </div>
     </div>
   );
 };
 
-export default TechnicianHome;
+export default TechnicianProfile;
