@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SignInCredential, userSignInReturn } from "@/Types/Auth";
+import { PasswordResetParameter } from "@/Types/User";
 
 export const authApi = createApi({
   reducerPath: "auth-api",
@@ -16,8 +17,16 @@ export const authApi = createApi({
         body: credential,
       }),
     }),
+
+    resetUserPassword: build.mutation<PasswordResetParameter, PasswordResetParameter>({
+      query: (userPassword) => ({
+          url: `User/ResetPassword`,
+          method: 'POST',
+          body: userPassword,
+      }),
+  }),
     
   }),
 });
 
-export const {useLoginUserMutation} = authApi;
+export const {useLoginUserMutation, useResetUserPasswordMutation} = authApi;

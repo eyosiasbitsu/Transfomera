@@ -23,7 +23,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex bg-yellow-200">
             <Sidebar />
-            <div className="flex-grow bg-white px-8 py-4 rounded-2xl">
+            <div className="flex-grow bg-white rounded-2xl">
               {children}
             </div>
           </div>
