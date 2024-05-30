@@ -7,6 +7,13 @@ export const authApi = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl: "https://transfomera.onrender.com/",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("tokenT")
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
 
   endpoints: (build) => ({

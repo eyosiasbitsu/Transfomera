@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import registerIcon from "@/public/images/Technician/arrow-square-right.svg";
 import starIcon from "@/public/images/Technician/Star Icon.svg";
 import userAvatar from "@/public/images/Technician/Avatar.svg";
@@ -10,11 +10,18 @@ import PasswordAndSecurity from "./PasswordAndSecurity";
 import Logout from "../Logout";
 import { useGetTechnicianTransformersQuery } from "@/app/GlobalRedux/Features/transormers/transormersAPI";
 import TransformersListSkeleton from "../Loading/TransformersListSkeleton";
+import { User } from "@/Types/User";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 const TechnicianProfile = () => {
-  const user = JSON.parse(window.localStorage.getItem("userT") as string);
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("userT") as string);
+    setUser(storedUser);
+  }, []);
+   
   const { data, isLoading, isFetching, isError, isSuccess } =
-    useGetTechnicianTransformersQuery(user._id);
+    useGetTechnicianTransformersQuery(user ? user._id : skipToken);
   // const transformers = [
   //   {
   //     _id: {
@@ -110,7 +117,7 @@ const TechnicianProfile = () => {
             </div>
             {data.transformer.length === 0 && (
               <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
-                You haven't registered transformers yet!
+                You have not registered transformers yet!
               </p>
             )}
             {data.transformer.length > 0 &&
@@ -146,11 +153,11 @@ const TechnicianProfile = () => {
       <div className="w-[30%] bg-[#F6F2DD] flex flex-col items-center gap-4 pb-20">
         <div className="flex flex-col gap-2">
           <Image src={userAvatar} alt="User Avatar" />
-          <p className="text-2xl font-bold">{user.fullname}</p>
+          <p className="text-2xl font-bold">{user ? user.fullname: "_____"}</p>
           <p className="text-[#979CA5]">Senior Technician</p>
           <Logout />
         </div>
-        <PasswordAndSecurity userId={user._id} />
+        <PasswordAndSecurity userId={user? user._id: ""} />
       </div>
     </div>
   );
