@@ -6,8 +6,8 @@ import registerIcon from "@/public/images/Technician/arrow-square-right.svg";
 import starIcon from "@/public/images/Technician/Star Icon.svg";
 import userAvatar from "@/public/images/Technician/Avatar.svg";
 import CircularProgressBar from "../Home/CircularProgressBar";
-import PasswordAndSecurity from "./PasswordAndSecurity";
-import Logout from "../Logout";
+import PasswordAndSecurity from "../../auth/PasswordAndSecurity";
+import Logout from "../../auth/Logout";
 import { useGetTechnicianTransformersQuery } from "@/app/GlobalRedux/Features/transormers/transormersAPI";
 import TransformersListSkeleton from "../Loading/TransformersListSkeleton";
 import { User } from "@/Types/User";
@@ -19,7 +19,7 @@ const TechnicianProfile = () => {
     const storedUser = JSON.parse(localStorage.getItem("userT") as string);
     setUser(storedUser);
   }, []);
-   
+
   const { data, isLoading, isFetching, isError, isSuccess } =
     useGetTechnicianTransformersQuery(user ? user._id : skipToken);
   // const transformers = [
@@ -81,8 +81,7 @@ const TechnicianProfile = () => {
   //     __v: 12,
   //   },
   // ];
-    
-  
+
   return (
     <div className="flex gap-8 mt-8 ml-4">
       <div className="w-[70%]">
@@ -104,11 +103,12 @@ const TechnicianProfile = () => {
           <p className="text-2xl font-bold my-4">Transformers</p>
         </div>
         {(isLoading || isFetching) && <TransformersListSkeleton />}
-        {isError && <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
-                Could not fetch transormers!
-              </p>}
+        {isError && (
+          <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
+            Could not fetch transormers!
+          </p>
+        )}
         {isSuccess && (
-          
           <>
             <div className="text-[#94918A] flex justify-between">
               <p>Location/Sensor ID</p>
@@ -153,11 +153,11 @@ const TechnicianProfile = () => {
       <div className="w-[30%] bg-[#F6F2DD] flex flex-col items-center gap-4 pb-20">
         <div className="flex flex-col gap-2">
           <Image src={userAvatar} alt="User Avatar" />
-          <p className="text-2xl font-bold">{user ? user.fullname: "_____"}</p>
+          <p className="text-2xl font-bold">{user ? user.fullname : "_____"}</p>
           <p className="text-[#979CA5]">Senior Technician</p>
           <Logout />
         </div>
-        <PasswordAndSecurity userId={user? user._id: ""} />
+        <PasswordAndSecurity userId={user ? user._id : ""} />
       </div>
     </div>
   );

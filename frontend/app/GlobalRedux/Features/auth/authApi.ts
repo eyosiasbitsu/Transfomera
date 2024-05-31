@@ -8,9 +8,9 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://transfomera.onrender.com/",
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem("tokenT")
+      const token = localStorage.getItem("tokenT");
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
     },
@@ -25,15 +25,20 @@ export const authApi = createApi({
       }),
     }),
 
-    resetUserPassword: build.mutation<PasswordResetParameter, PasswordResetParameter>({
-      query: (userPassword) => ({
-          url: `User/ResetPassword`,
-          method: 'POST',
-          body: userPassword,
+    resetUserPassword: build.mutation<
+      PasswordResetParameter,
+      PasswordResetParameter
+    >({
+      query: (userPasswordObj) => ({
+        url: `api/users/${userPasswordObj.userId}`,
+        method: "PUT",
+        body: {
+          currentPassword: userPasswordObj.oldPassword,
+          newPassword: userPasswordObj.newPassword,
+        },
       }),
-  }),
-    
+    }),
   }),
 });
 
-export const {useLoginUserMutation, useResetUserPasswordMutation} = authApi;
+export const { useLoginUserMutation, useResetUserPasswordMutation } = authApi;

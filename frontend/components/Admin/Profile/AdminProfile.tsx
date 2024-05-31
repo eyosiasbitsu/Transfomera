@@ -5,24 +5,24 @@ import React, { useEffect, useState } from "react";
 import registerIcon from "@/public/images/Technician/arrow-square-right.svg";
 import starIcon from "@/public/images/Technician/Star Icon.svg";
 import userAvatar from "@/public/images/Technician/Avatar.svg";
-import CircularProgressBar from "../Home/CircularProgressBar";
-import Logout from "../../auth/Logout";
+import CircularProgressBar from "@/components/Technician/Home/CircularProgressBar";
+import PasswordAndSecurity from "@/components/auth/PasswordAndSecurity";
+import Logout from "@/components/auth/Logout";
 import { useGetTechnicianTransformersQuery } from "@/app/GlobalRedux/Features/transormers/transormersAPI";
-import TransformersListSkeleton from "../Loading/TransformersListSkeleton";
+import TransformersListSkeleton from "@/components/Technician/Loading/TransformersListSkeleton";
 import { User } from "@/Types/User";
 import { skipToken } from "@reduxjs/toolkit/query";
-import Link from "next/link";
 
-const TechnicianHome = () => {
+const AdminProfile = () => {
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("userT") as string);
     setUser(storedUser);
   }, []);
-
+   
   const { data, isLoading, isFetching, isError, isSuccess } =
-    useGetTechnicianTransformersQuery(user ? user._id : skipToken);
-
+    useGetTechnicianTransformersQuery(user ? user._id : skipToken);    
+  
   return (
     <div className="flex gap-8 mt-8 ml-4">
       <div className="w-[70%]">
@@ -44,12 +44,11 @@ const TechnicianHome = () => {
           <p className="text-2xl font-bold my-4">Transformers</p>
         </div>
         {(isLoading || isFetching) && <TransformersListSkeleton />}
-        {isError && (
-          <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
-            Could not fetch transormers!
-          </p>
-        )}
+        {isError && <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
+                Could not fetch transormers!
+              </p>}
         {isSuccess && (
+          
           <>
             <div className="text-[#94918A] flex justify-between">
               <p>Location/Sensor ID</p>
@@ -58,7 +57,7 @@ const TechnicianHome = () => {
             </div>
             {data.transformer.length === 0 && (
               <p className="text-[#94918A] text-xl mt-10 w-fit mx-auto">
-                No registered transformers!
+                You have not registered transformers yet!
               </p>
             )}
             {data.transformer.length > 0 &&
@@ -94,16 +93,14 @@ const TechnicianHome = () => {
       <div className="w-[30%] bg-[#F6F2DD] flex flex-col items-center gap-4 pb-20">
         <div className="flex flex-col gap-2">
           <Image src={userAvatar} alt="User Avatar" />
-          <Link href="/technician/profile" className="text-2xl font-bold">
-            {user ? user.fullname : "____"}
-          </Link>
+          <p className="text-2xl font-bold">{user ? user.fullname: "_____"}</p>
           <p className="text-[#979CA5]">Senior Technician</p>
           <Logout />
         </div>
-        <p>Chatbot</p>
+        <PasswordAndSecurity userId={user? user._id: ""} />
       </div>
     </div>
   );
 };
 
-export default TechnicianHome;
+export default AdminProfile;
