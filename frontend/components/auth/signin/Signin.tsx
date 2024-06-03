@@ -8,7 +8,7 @@ import { SignInCredential } from "@/Types/Auth";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "../UI/Button";
+import Button from "../../UI/Button";
 
 const Signin = () => {
   const [email, setEmail] = useState("");

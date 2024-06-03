@@ -1,11 +1,12 @@
 // PasswordSecurity.tsx
 import React, { useState } from "react";
-import PasswordInput from "@/components/signin/PasswordInput";
+import PasswordInput from "@/components/auth/signin/PasswordInput";
 import Button from "@/components/UI/Button";
 import { useResetUserPasswordMutation } from "@/app/GlobalRedux/Features/auth/authAPI";
 import { PasswordResetParameter } from "@/Types/User";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 interface PasswordAndSecurityProps {
   userId: string;
@@ -25,6 +26,7 @@ const PasswordAndSecurity: React.FC<PasswordAndSecurityProps> = ({
     passwordMatch: "",
   });
 
+  const router = useRouter();
   const [resetUserPassword] = useResetUserPasswordMutation();
 
   const handleUpdate = async (
@@ -42,6 +44,7 @@ const PasswordAndSecurity: React.FC<PasswordAndSecurityProps> = ({
 
       toast.success("Password updated successfully");
       setIsUpdating(false);
+      router.refresh();
     } else {
       toast.error("Could not update password!");
       console.log("Form validation failed");
