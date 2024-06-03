@@ -1,7 +1,7 @@
 "use strict";
 
 import { configureStore } from "@reduxjs/toolkit";
-import { authApi } from "./Features/auth/authAPI";
+import { authApi } from "./Features/auth/authApi";
 import { transformerApi } from "./Features/transormers/transormersAPI";
 
 export const store = configureStore({

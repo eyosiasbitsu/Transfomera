@@ -12,14 +12,10 @@ import TransformersListSkeleton from "../Loading/TransformersListSkeleton";
 import { User } from "@/Types/User";
 import { skipToken } from "@reduxjs/toolkit/query";
 import Link from "next/link";
+import ChatBot from "./ChatBot";
 
 const TechnicianHome = () => {
-  const [user, setUser] = useState<User | null>(null);
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("userT") as string);
-    setUser(storedUser);
-  }, []);
-
+    const user = JSON.parse(window.localStorage.getItem("userT") as string);
   const { data, isLoading, isFetching, isError, isSuccess } =
     useGetTechnicianTransformersQuery(user ? user._id : skipToken);
 
@@ -94,13 +90,11 @@ const TechnicianHome = () => {
       <div className="w-[30%] bg-[#F6F2DD] flex flex-col items-center gap-4 pb-20">
         <div className="flex flex-col gap-2">
           <Image src={userAvatar} alt="User Avatar" />
-          <Link href="/technician/profile" className="text-2xl font-bold">
-            {user ? user.fullname : "____"}
-          </Link>
+          <Link href='/technician/profile' className="text-2xl font-bold">{user?.fullname}</Link>
           <p className="text-[#979CA5]">Senior Technician</p>
           <Logout />
         </div>
-        <p>Chatbot</p>
+        <ChatBot/>
       </div>
     </div>
   );
