@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import PasswordInput from "@/components/auth/signin/PasswordInput";
 import Button from "@/components/UI/Button";
-import { useResetUserPasswordMutation } from "@/app/GlobalRedux/Features/auth/authAPI";
+import { useResetUserPasswordMutation } from "@/app/GlobalRedux/Features/auth/authApi";
 import { PasswordResetParameter } from "@/Types/User";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

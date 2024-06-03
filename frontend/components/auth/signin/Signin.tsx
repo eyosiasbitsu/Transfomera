@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import TextInputField from "./TextInputField";
 import PasswordInput from "./PasswordInput";
-import { useLoginUserMutation } from "@/app/GlobalRedux/Features/auth/authAPI";
+import { useLoginUserMutation } from "@/app/GlobalRedux/Features/auth/authApi";
 import { SignInCredential } from "@/Types/Auth";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
