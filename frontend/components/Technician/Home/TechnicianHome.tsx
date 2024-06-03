@@ -15,7 +15,11 @@ import Link from "next/link";
 import ChatBot from "./ChatBot";
 
 const TechnicianHome = () => {
-    const user = JSON.parse(window.localStorage.getItem("userT") as string);
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("userT") as string);
+    setUser(storedUser);
+  }, []);
   const { data, isLoading, isFetching, isError, isSuccess } =
     useGetTechnicianTransformersQuery(user ? user._id : skipToken);
 
