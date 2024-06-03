@@ -18,12 +18,12 @@ const TechniciansList = () => {
     },
   ];
   return (
-    <div className="w-[90%] border-t border-t-[#979CA5] pt-4">
+    <div className="w-[90%] border-t border-t-[#979CA5] pt-4 sm:w-9">
       <p className="text-2xl font-bold">Technicians</p>
       <div className="max-h-80 overflow-y-auto pr-2">
-        {technicians.map((technician) => {
+        {technicians.map((technician, idx) => {
           return (
-            <div className="bg-white flex gap-2 my-3 rounded-lg py-4">
+            <div key={idx} className="bg-white flex gap-2 my-3 rounded-lg py-4">
               <Image src={technicianAvatar} alt="Technician Avatar" />
               <div>
                 <p className="text-xl font-bold">{technician.fullname}</p>
