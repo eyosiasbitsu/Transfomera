@@ -56,7 +56,7 @@ const Register = () => {
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="city">City*</label>
-                <input id="city" placeholder="Write the city where the transform located" className="w-full p-4 bg-gray-100 rounded-xl " onChange={(e)=>handleCity(e)}/>
+                <input id="city" placeholder="Write the city where the transform locate" className="w-full p-4 bg-gray-100 rounded-xl " onChange={(e)=>handleCity(e)}/>
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="street">City*</label>
@@ -68,7 +68,7 @@ const Register = () => {
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="sensor">Sensor ID</label>
-                <input id="sensor" placeholder="write the city where the transform located" className="w-full p-2 bg-gray-100 rounded-xl" onChange={(e)=>handleCity(e)}/>
+                <input id="sensor" placeholder="write the sensor id of the transformer" className="w-full p-2 bg-gray-100 rounded-xl" onChange={(e)=>handleCity(e)}/>
             </div>
             <div>
                 
