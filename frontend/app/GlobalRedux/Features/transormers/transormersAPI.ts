@@ -17,7 +17,15 @@ export const transformerApi = createApi({
     getTechnicianTransformers: builder.query<{ transformer: Transformer[] }, string>({
       query: (userId) => `api/transformers/${userId}`,
     }),
+
+    registerTransformer : builder.mutation<void, {country:string, city:string, streetAddress:string, sensorId:string, serialNumber:number, location:string}>({
+      query:(detail)=>({
+        url:'api/transformers',
+        method:"POST",
+        body:detail
+      })   
+   })
   }),
 });
 
-export const { useGetTechnicianTransformersQuery } = transformerApi;
+export const { useGetTechnicianTransformersQuery, useRegisterTransformerMutation } = transformerApi;
