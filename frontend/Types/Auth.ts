@@ -13,3 +13,10 @@ export interface userSignInReturn {
 		email: string,
 	},
 }
+
+export interface signUpCredential{
+	name:string,
+	role:string,
+	password:string,
+	email:string
+}

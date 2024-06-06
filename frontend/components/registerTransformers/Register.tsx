@@ -52,23 +52,23 @@ const Register = () => {
             <h1 className="font-bold text-2xl ">Register a Transformer</h1>
             <div className="flex flex-col gap-4 w-full">
                 <label htmlFor="country">Country*</label>
-                <input id="country" placeholder="Select Your Optioning Country" className="w-full p-2 bg-gray-100 rounded-xl" onChange={(e)=>handleCountry(e)}/>
+                <input id="country" placeholder="Select Your Optioning Country" className="w-full p-2 focus:outline-none bg-gray-100 rounded-xl" onChange={(e)=>handleCountry(e)}/>
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="city">City*</label>
-                <input id="city" placeholder="Write the city where the transform locate" className="w-full p-4 bg-gray-100 rounded-xl " onChange={(e)=>handleCity(e)}/>
+                <input id="city" placeholder="Write the city where the transform locate" className="w-full p-4 focus:outline-none bg-gray-100 rounded-xl " onChange={(e)=>handleCity(e)}/>
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="street">City*</label>
-                <input id="street" placeholder="Write the street address" className="w-full p-2 bg-gray-100 rounded-xl" onChange={(e)=>handleStreetAdddress(e)}/>
+                <input id="street" placeholder="Write the street address" className="w-full p-2 bg-gray-100 focus:outline-none rounded-xl" onChange={(e)=>handleStreetAdddress(e)}/>
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="serial">Serial Number</label>
-                <input id="serial" placeholder="Write the serial number of the tranformer" className="w-full p-2 bg-gray-100 rounded-xl" onChange={(e)=>handleSerialNumber(e)}/>
+                <input id="serial" placeholder="Write the serial number of the tranformer" className="w-full p-2 focus:outline-none bg-gray-100 rounded-xl" onChange={(e)=>handleSerialNumber(e)}/>
             </div>
             <div className="w-full flex flex-col gap-4">
                 <label htmlFor="sensor">Sensor ID</label>
-                <input id="sensor" placeholder="write the sensor id of the transformer" className="w-full p-2 bg-gray-100 rounded-xl" onChange={(e)=>handleCity(e)}/>
+                <input id="sensor" placeholder="write the sensor id of the transformer" className="w-full p-2 bg-gray-100 focus:outline-none rounded-xl" onChange={(e)=>handleCity(e)}/>
             </div>
             <div>
                 
