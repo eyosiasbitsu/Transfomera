@@ -25,6 +25,10 @@ const transformerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+  serialNumber: {
+    type: String,
+    required: true,
+  },
   registeredBy: {
     type: ObjectId,
     required: true

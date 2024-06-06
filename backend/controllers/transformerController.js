@@ -32,7 +32,7 @@ const addSensorData = async (req, res) => {
 
 const registerTransformer = async (req, res) => {
     try {
-        const { city, streetAddress, sensorId} = req.body;
+        const { city, streetAddress, sensorId, serialNumber } = req.body;
         // Ensure that the authMiddleware is called before this function
         // so req.user is populated
         if (!req.user) {
@@ -44,6 +44,7 @@ const registerTransformer = async (req, res) => {
             city,
             streetAddress,
             sensorId,
+            serialNumber,
             healthPercentile: null, // Health percentile is not provided during registration
             installationDate: new Date(),
             assignedTechnician: null, // Initially unassigned
