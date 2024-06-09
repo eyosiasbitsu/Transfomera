@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SignInCredential, userSignInReturn, signUpCredential } from "@/Types/Auth";
-import { PasswordResetParameter } from "@/Types/User";
+import { PasswordResetParameter, User } from "@/Types/User";
 
 export const authApi = createApi({
   reducerPath: "auth-api",
@@ -45,10 +45,15 @@ export const authApi = createApi({
         method:"POST",
         body:userDetail
       })
-    })
+    }),
+
+    getAllTechnicians: build.query<User[], void>({
+      query: () => `api/users`,
+    }),
+
   }),
 
 
 });
 
-export const { useLoginUserMutation, useResetUserPasswordMutation, useRegisterUserMutation } = authApi;
+export const { useLoginUserMutation, useResetUserPasswordMutation, useRegisterUserMutation, useGetAllTechniciansQuery } = authApi;
