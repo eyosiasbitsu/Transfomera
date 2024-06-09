@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Sensor = require('../models/Sensor');
 const User = require('../models/User');
+const { raw } = require('express');
 
 const addSensorData = async (req, res) => {
     try {
@@ -19,6 +20,7 @@ const addSensorData = async (req, res) => {
 
       // Add transformerId to the rawSensorData
       rawSensorData.transformerId = updatedTransformer._id;
+      rawSensorData.date = Date.now();
       
       // Create and save the new Sensor data document
       const newSensorData = new Sensor(rawSensorData);
