@@ -37,7 +37,7 @@ const addSensorData = async (req, res) => {
 
 const registerTransformer = async (req, res) => {
     try {
-        const { city, streetAddress, sensorId, serialNumber } = req.body;
+        const { city, streetAddress, sensorId, serialNumber, latitude, longitude } = req.body;
         // Ensure that the authMiddleware is called before this function
         // so req.user is populated
         if (!req.user) {
@@ -48,6 +48,8 @@ const registerTransformer = async (req, res) => {
         const newTransformer = new Transformer({
             city,
             streetAddress,
+            latitude,
+            longitude,
             sensorId,
             serialNumber,
             healthPercentile: null, // Health percentile is not provided during registration
@@ -66,8 +68,8 @@ const registerTransformer = async (req, res) => {
 
 const getTransformerById = async (req, res) => {
     try {
-        const sensorId = req.params.id;
-        const transformer = await Transformer.find( {sensorId : sensorId});
+        const id = req.params.id;
+        const transformer = await Transformer.findById(id);
 
         if (!transformer) {
           return res.status(404).json({ message: 'Transformer not found' });
