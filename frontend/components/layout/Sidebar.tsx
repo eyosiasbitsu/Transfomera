@@ -1,24 +1,38 @@
+"use client"
+
 // Sidebar.tsx
-import React from "react";
+import { User } from "@/Types/User";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const Sidebar: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("userT") as string);
+    setUser(storedUser);
+  }, []);
+
   return (
     <div className="flex flex-col items-start bg-yellow-200 w-1/4 p-4 pt-14">
-      <button
-        className={`w-full text-start  my-2 px-4 py-3 rounded-md text-placeholder-color hover:bg-otpInputColor`}
+      <Link
+        href={`${user?.role === "Admin" ? "/admin" : "/technician"}`}
+        className={`w-full text-start font-semibold my-2 px-4 py-3 rounded-md hover:bg-white hover:text-yellow-400`}
       >
-        Edit Profile
-      </button>
-      <button
-        className={`w-full text-start  my-2 px-4 py-3 rounded-md text-placeholder-color hover:bg-otpInputColor`}
+        Home
+      </Link>
+      <Link
+        href={`${user?.role === "Admin" ? "/admin/profile" : "/technician/profile"}`}
+        className={`w-full text-start font-semibold my-2 px-4 py-3 rounded-md hover:bg-white hover:text-yellow-400`}
       >
-        Notifications
-      </button>
-      <button
-        className={`w-full text-start my-2 px-4 py-3 rounded-md text-placeholder-color hover:bg-otpInputColor`}
+        My Profile
+      </Link>
+      <Link
+        href="/register"
+        className={`w-full text-start font-semibold my-2 px-4 py-3 rounded-md hover:bg-white hover:text-yellow-400`}
       >
-        Password and Security
-      </button>
+        Register a Transformer
+      </Link>
+      
     </div>
   );
 };

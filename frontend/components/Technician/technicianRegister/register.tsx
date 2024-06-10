@@ -44,7 +44,7 @@ const RegisterTechnician = () => {
 
 
   return (
-    <div className='flex flex-col gap-4 py-20 w-[500px] px-10'>
+    <div className='flex flex-col gap-4 py-20 px-10'>
         <h1 className='text-2xl font-bold'>Register a Technicain</h1>
         <div className='flex flex-col gap-2'>
             <label htmlFor="name">Full Name</label>
