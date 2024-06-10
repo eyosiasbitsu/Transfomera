@@ -1,3 +1,5 @@
+"use client"
+
 import { User } from "@/Types/User";
 import AdminHome from "@/components/Admin/Home/AdminHome";
 import TechnicianHome from "@/components/Technician/Home/TechnicianHome";
