@@ -12,7 +12,7 @@ const ChatBot = () => {
       setRequest(message)
       const mess = message
       setMessage("")
-      const response = await sendMessage({request:mess})
+      const response = await sendMessage(mess);
       console.log(response)
       setResponseMessage(response.data? response.data.response : 'no result')
   }
