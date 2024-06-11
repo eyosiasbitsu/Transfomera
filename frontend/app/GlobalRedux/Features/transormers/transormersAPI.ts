@@ -30,7 +30,7 @@ export const transformerApi = createApi({
       query: (transformerId) => `api/sensor/${transformerId}`,
     }),
 
-    registerTransformer : builder.mutation<void, {country:string, city:string, streetAddress:string, sensorId:string, serialNumber:number, location:string, latitude: number, longitude: number}>({
+    registerTransformer : builder.mutation<void, {city:string, streetAddress:string, sensorId:string, serialNumber:number, location:string, latitude: number, longitude: number}>({
       query:(detail)=>({
         url:'api/transformers',
         method:"POST",

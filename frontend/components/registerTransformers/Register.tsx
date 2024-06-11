@@ -3,9 +3,10 @@ import { useRegisterTransformerMutation } from "@/app/GlobalRedux/Features/trans
 import { useState } from "react";
 import Button from "../UI/Button";
 import LocationPicker from "./GoogleMapsLocationPicker/LocationPicker";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const [country, setCountry] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [streetAddress, setStreetAddress] = useState<string>("");
   const [serialNumber, setSerialNumber] = useState<number>(0);
@@ -16,24 +17,24 @@ const Register = () => {
   const [regiserTranfromer, { isLoading }] = useRegisterTransformerMutation();
 
   const registerTranformer = async () => {
-    if (country && city && streetAddress) {
-      await regiserTranfromer({
-        country,
-        city,
-        streetAddress,
-        sensorId,
-        serialNumber,
-        location: "",
-        latitude,
-        longitude
-      });
+    if (city && streetAddress) {
+      try {
+        const res = await regiserTranfromer({
+          city,
+          streetAddress,
+          sensorId,
+          serialNumber,
+          location: "",
+          latitude,
+          longitude,
+        });
+        toast.success("Transormer registered successfully.");
+      } catch (error) {
+        toast.error("Error registering transformer!");
+      }
     } else {
       return <div>Please fill the required fields</div>;
     }
-  };
-
-  const handleCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCountry(e.target.value);
   };
 
   const handleCity = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -51,15 +52,6 @@ const Register = () => {
     <div className="flex gap-4 rounded-lg shadow-lg pl-8 pt-14 w-full">
       <div className="flex flex-col gap-4 w-full pt-6">
         <h1 className="font-bold text-2xl ">Register a Transformer</h1>
-        <div className="flex flex-col gap-4 w-full">
-          <label htmlFor="country">Country*</label>
-          <input
-            id="country"
-            placeholder="Select Your Optioning Country"
-            className="w-full p-2 focus:outline-none bg-gray-100 rounded-xl"
-            onChange={(e) => handleCountry(e)}
-          />
-        </div>
         <div className="w-full flex flex-col gap-4">
           <label htmlFor="city">City*</label>
           <input
@@ -93,7 +85,7 @@ const Register = () => {
             id="sensor"
             placeholder="write the sensor id of the transformer"
             className="w-full p-2 bg-gray-100 focus:outline-none rounded-xl"
-            onChange={(e) => handleCity(e)}
+            onChange={(e) => handleSensorId(e)}
           />
         </div>
         <div>
@@ -114,6 +106,7 @@ const Register = () => {
         />
       </div>
       <div className="bg-yellow-100 min-h-full w-96"></div>
+      <ToastContainer />
     </div>
   );
 };
