@@ -111,11 +111,6 @@ const updateTransformerById = async (req, res) => {
           return res.status(404).json({ message: 'Transformer not found' });
         }
     
-        // Check if the logged-in technician is assigned to this transformer
-        if (!req.user || transformer.assignedTechnician._id.toString() !== req.user._id.toString()) {
-          return res.status(403).json({ message: 'You are not authorized to update this transformer' });
-        }
-    
         // Update the transformer with the new data
         for (const key in updateParams) {
           transformer[key] = updateParams[key];
