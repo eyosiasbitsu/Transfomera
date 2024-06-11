@@ -1,32 +1,30 @@
-import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const chatApi = createApi({
-    reducerPath:'chatApi',
-    baseQuery:fetchBaseQuery({
-        baseUrl:'https://chatbot-7jrw.onrender.com/',
-        prepareHeaders:(headers)=>{
-            const token = localStorage.getItem('tokenT')
-            if(token){
-                headers.set('Authorization', `Bearer ${token}`)
-            }
+  reducerPath: "chatApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://chatbot-7jrw.onrender.com/",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("tokenT");
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
 
-            return headers
-        }
+      return headers;
+    },
+  }),
+
+  endpoints: (build) => ({
+    chat: build.mutation<{ response: string }, string>({
+      query: (request) => {
+        return {
+          url: "message",
+          method: "POST",
+          body: { message: request },
+        };
+      },
     }),
+  }),
+});
 
-    endpoints:(build)=>({
-        chat:build.mutation<{response:string}, {request:string}>({
-            query:(request)=>{
-                console.log(request.request)
-                return {
-                    url:"message",
-                    method:"POST",
-                    body:request.request
-                }
-            }
-           }),
-    })
-})
-
-export const { useChatMutation} = chatApi 
+export const { useChatMutation } = chatApi;

@@ -2,8 +2,12 @@
 
 // Sidebar.tsx
 import { User } from "@/Types/User";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import roundedLeaf from '@/public/images/Round Leaf.svg';
+import sharpLeaf from '@/public/images/Sharp Leaf.svg';
+// import logo from '@/public/images/transformera_logo.png';
 
 const Sidebar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -13,7 +17,12 @@ const Sidebar: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-start bg-yellow-200 w-1/4 p-4 pt-14">
+    <div className="flex flex-col items-start bg-yellow-200 w-1/4 p-4">
+      {/* <Image src={logo} alt="Logo" className="w-10 h-12" /> */}
+      <div className="flex gap-16 mb-16">
+        <Image src={sharpLeaf} alt="Sharp Leaf" />
+        <Image src={roundedLeaf} alt="Rounded Leaf" />
+      </div>
       <Link
         href={`${user?.role === "Admin" ? "/admin" : "/technician"}`}
         className={`w-full text-start font-semibold my-2 px-4 py-3 rounded-md hover:bg-white hover:text-yellow-400`}
