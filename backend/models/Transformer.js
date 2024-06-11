@@ -11,6 +11,14 @@ const transformerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  latitude: {
+    type: Number,
+    required: true
+  },
+  longitude: {
+    type: Number,
+    required: true
+  },
   sensorId: { 
     type: String,
     required: true
@@ -24,6 +32,10 @@ const transformerSchema = new mongoose.Schema({
   assignedTechnician: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
+  },
+  serialNumber: {
+    type: String,
+    required: true,
   },
   registeredBy: {
     type: ObjectId,

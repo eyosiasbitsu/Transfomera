@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Sensor = require('../models/Sensor');
 const User = require('../models/User');
+const { raw } = require('express');
 
 const addSensorData = async (req, res) => {
     try {
@@ -10,16 +11,20 @@ const addSensorData = async (req, res) => {
       const sensorId = req.params.id;
       const rawSensorData = req.body;
 
-      // Create and save the new Sensor data document
-      const newSensorData = new Sensor(rawSensorData);
-      const savedSensorData = await newSensorData.save();
-
       // Find the corresponding Transformer and add the ID of the new Sensor data to its sensorData array
       const updatedTransformer = await Transformer.findOne( { sensorId: sensorId } );
 
       if (!updatedTransformer) {
         return res.status(404).send({ message: "Transformer not found." });
       }
+
+      // Add transformerId to the rawSensorData
+      rawSensorData.transformerId = updatedTransformer._id;
+      rawSensorData.date = Date.now();
+      
+      // Create and save the new Sensor data document
+      const newSensorData = new Sensor(rawSensorData);
+      const savedSensorData = await newSensorData.save();
 
       updatedTransformer.sensorData.push(savedSensorData.id);
       await updatedTransformer.save(); 
@@ -32,7 +37,7 @@ const addSensorData = async (req, res) => {
 
 const registerTransformer = async (req, res) => {
     try {
-        const { city, streetAddress, sensorId} = req.body;
+        const { city, streetAddress, sensorId, serialNumber, latitude, longitude } = req.body;
         // Ensure that the authMiddleware is called before this function
         // so req.user is populated
         if (!req.user) {
@@ -43,7 +48,10 @@ const registerTransformer = async (req, res) => {
         const newTransformer = new Transformer({
             city,
             streetAddress,
+            latitude,
+            longitude,
             sensorId,
+            serialNumber,
             healthPercentile: null, // Health percentile is not provided during registration
             installationDate: new Date(),
             assignedTechnician: null, // Initially unassigned
@@ -60,8 +68,8 @@ const registerTransformer = async (req, res) => {
 
 const getTransformerById = async (req, res) => {
     try {
-        const sensorId = req.params.id;
-        const transformer = await Transformer.find( {sensorId : sensorId});
+        const id = req.params.id;
+        const transformer = await Transformer.findById(id);
 
         if (!transformer) {
           return res.status(404).json({ message: 'Transformer not found' });

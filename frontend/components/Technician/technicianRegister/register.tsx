@@ -1,6 +1,5 @@
 'use client'
 import { useRegisterUserMutation } from '@/app/GlobalRedux/Features/auth/authApi';
-import Image from 'next/image'
 import { useState } from 'react'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 

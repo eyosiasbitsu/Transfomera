@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
 const transformerRoutes = require('./routes/transformerRoutes');
+const sensorRoutes = require('./routes/sensorRoutes');
 
 // Load environment variables from .env file
 dotenv.config({ path: '../.env' });
@@ -29,3 +30,4 @@ app.listen(PORT, () => {
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/transformers', transformerRoutes);
+app.use('/api/sensor', sensorRoutes);
