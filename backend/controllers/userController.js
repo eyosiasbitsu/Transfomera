@@ -7,39 +7,103 @@ var postmark = require("postmark");
 
 // Registration controller
 const registerUser = async (req, res) => {
-    try {
+  try {
       const { fullname, role, password, email } = req.body;
 
       // Check if user already exists
       const existingUser = await User.findOne({ email });
       if (existingUser) {
-        return res.status(400).json({ message: 'User already exists' });
+          return res.status(400).json({ message: 'User already exists' });
       }
 
       // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
-  
+
       // Create a new user
       const newUser = new User({ fullname, role, password: hashedPassword, email });
       await newUser.save();
 
-      // Send an email:
+      // Send an email
       var client = new postmark.ServerClient("a1d20d26-ad4f-44f4-95cc-4fe0cac38584");
 
       client.sendEmail({
-        "From": "fitsum@a2sv.org",
-        "To": email,
-        "Subject": "Registration Successful",
-        "HtmlBody": "<strong>Welcome to our platform! You have successfully registered.</strong>",
-        "TextBody": "Welcome to our platform!",
-        "MessageStream": "transformera"
+          "From": "fitsum@a2sv.org",
+          "To": email,
+          "Subject": "Registration Successful",
+          "HtmlBody": `
+              <html>
+              <head>
+                  <style>
+                      .email-container {
+                          font-family: Arial, sans-serif;
+                          max-width: 600px;
+                          margin: auto;
+                          padding: 20px;
+                          border: 1px solid #ddd;
+                          border-radius: 10px;
+                          background-color: #f9f9f9;
+                      }
+                      .email-header {
+                          text-align: center;
+                          background-color: #4CAF50;
+                          color: white;
+                          padding: 10px 0;
+                          border-radius: 10px 10px 0 0;
+                      }
+                      .email-body {
+                          padding: 20px;
+                          text-align: left;
+                      }
+                      .email-footer {
+                          text-align: center;
+                          padding: 10px;
+                          color: #777;
+                          font-size: 12px;
+                      }
+                      .user-info {
+                          background-color: #f2f2f2;
+                          padding: 10px;
+                          border-radius: 5px;
+                          margin: 20px 0;
+                      }
+                      .user-info p {
+                          margin: 5px 0;
+                      }
+                  </style>
+              </head>
+              <body>
+                  <div class="email-container">
+                      <div class="email-header">
+                          <h1>Welcome to Our Platform!</h1>
+                      </div>
+                      <div class="email-body">
+                          <p>Dear ${fullname},</p>
+                          <p>Thank you for registering on our platform. Your registration was successful!</p>
+                          <div class="user-info">
+                              <p><strong>Username:</strong> ${fullname}</p>
+                              <p><strong>Password:</strong> ${password}</p>
+                          </div>
+                          <p>We are excited to have you on board. If you have any questions or need assistance, please feel free to reach out to our support team.</p>
+                          <p>Best regards,</p>
+                          <p>The Team</p>
+                      </div>
+                      <div class="email-footer">
+                          <p>© 2024 Our Platform. All rights reserved.</p>
+                      </div>
+                  </div>
+              </body>
+              </html>
+          `,
+          "TextBody": `Welcome to our platform, ${fullname}! Your registration was successful. Username: ${email}, Password: ${password}`,
+          "MessageStream": "transformera"
       });
 
       res.status(201).json({ message: 'User registered successfully' });
-    } catch (error) {
+  } catch (error) {
       res.status(500).json({ message: error.message });
-    }
-  };  
+  }
+};
+
 
 // Login controller
 const loginUser = async (req, res) => {
