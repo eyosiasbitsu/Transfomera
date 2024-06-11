@@ -36,7 +36,8 @@ export const transformerApi = createApi({
         method:"POST",
         body:detail
       })   
-   })
+   }),
+  
   }),
 });
 
