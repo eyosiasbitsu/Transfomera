@@ -35,11 +35,11 @@ const AdminProfile = () => {
             <p>Welcome</p>
           </div>
           <div
-            onClick={() => router.push("/register")}
+            onClick={() => router.push("/techniciansignup")}
             className="flex items-center gap-2 hover:cursor-pointer"
           >
             <p className="bg-[#EAD595] px-2 py-1 rounded-lg">
-              Register a Transformer
+              Register a Technician
             </p>
             <button>
               <Image src={registerIcon} alt="Register Icon" />
