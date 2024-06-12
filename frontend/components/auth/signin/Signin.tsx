@@ -25,7 +25,7 @@ const Signin = () => {
       const response = await loginUser(userCredential).unwrap();
       localStorage.setItem("tokenT", response.token);
       localStorage.setItem("userT", JSON.stringify(response.userDetail));
-      router.push("/technician");
+      router.push("/home");
       toast.success("loged in successfully");
     } catch (error) {
       toast.error("Invalid credentials");

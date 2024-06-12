@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { useChatMutation } from '@/app/GlobalRedux/Features/chat/chatApi'
 import Image from 'next/image'
+import sendIcon from "@/public/images/Technician/sendMessage.svg";
 
 const ChatBot = () => {
   const[sendMessage, { isLoading, isError}] = useChatMutation()
@@ -64,8 +65,8 @@ const ChatBot = () => {
                     value={message}
                     onKeyDown={(e)=>handleKeyDown(e)}
                     />
-                    <button className="px-2" onClick={handleMessage}>
-                      <Image src="/images/Technician/sendMessage.svg" width={30} height={30} alt="send message icon"/>
+                    <button className="px-2 z-50 min-w-8" onClick={handleMessage}>
+                      <Image src={sendIcon} width={0} height={0} className='h-8 w-8' alt="send message icon"/>
                     </button>
                 </div>
                 
