@@ -89,7 +89,7 @@ const registerUser = async (req, res) => {
               <body>
                   <div class="email-container">
                       <div class="email-header">
-                          <h1>Welcome to Our Platform!</h1>
+                          <h1>Welcome to Transformera!</h1>
                       </div>
                       <div class="email-body">
                           <p>Dear ${fullname},</p>
