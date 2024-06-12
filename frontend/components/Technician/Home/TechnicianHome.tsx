@@ -24,9 +24,7 @@ const TechnicianHome = () => {
   const { data, isLoading, isFetching, isError, isSuccess } =
     useGetAllTransformersQuery();
 
-  if (isSuccess) {
-    console.log("dd", data);
-  }
+
 
   return (
     <div className="flex gap-8 mt-8 ml-4">
