@@ -95,7 +95,7 @@ const registerUser = async (req, res) => {
                           <p>Dear ${fullname},</p>
                           <p>Thank you for registering on our platform. Your registration was successful!</p>
                           <div class="user-info">
-                              <p><strong>Username:</strong> ${fullname}</p>
+                              <p><strong>Username:</strong> ${email}</p>
                               <p><strong>Password:</strong> ${password}</p>
                           </div>
                           <p>We are excited to have you on board. If you have any questions or need assistance, please feel free to reach out to our support team.</p>
