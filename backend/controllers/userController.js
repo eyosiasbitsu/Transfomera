@@ -69,6 +69,21 @@ const registerUser = async (req, res) => {
                       .user-info p {
                           margin: 5px 0;
                       }
+                      .button-container {
+                          text-align: center;
+                          margin-top: 20px;
+                      }
+                      .login-button {
+                          background-color: #4CAF50;
+                          color: white;
+                          padding: 10px 20px;
+                          text-decoration: none;
+                          border-radius: 5px;
+                          display: inline-block;
+                      }
+                      .login-button:hover {
+                          background-color: #45a049;
+                      }
                   </style>
               </head>
               <body>
@@ -84,6 +99,9 @@ const registerUser = async (req, res) => {
                               <p><strong>Password:</strong> ${password}</p>
                           </div>
                           <p>We are excited to have you on board. If you have any questions or need assistance, please feel free to reach out to our support team.</p>
+                          <div class="button-container">
+                              <a href="https://transfomera.vercel.app/" class="login-button">Login to Your Account</a>
+                          </div>
                           <p>Best regards,</p>
                           <p>The Team</p>
                       </div>
@@ -94,7 +112,7 @@ const registerUser = async (req, res) => {
               </body>
               </html>
           `,
-          "TextBody": `Welcome to our platform, ${fullname}! Your registration was successful. Username: ${email}, Password: ${password}`,
+          "TextBody": `Welcome to our platform, ${fullname}! Your registration was successful. Username: ${email}, Password: ${password}. Visit https://transfomera.vercel.app/ to login.`,
           "MessageStream": "transformera"
       });
 
