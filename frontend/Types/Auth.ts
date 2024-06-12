@@ -15,7 +15,7 @@ export interface userSignInReturn {
 }
 
 export interface signUpCredential{
-	name:string,
+	fullname:string,
 	role:string,
 	password:string,
 	email:string
