@@ -22,5 +22,5 @@ export default function Home() {
     return <TechnicianHome />;
   }
 
-  return <Signin />;
+  router.push("/signin");
 }

@@ -5,6 +5,8 @@ import Button from "../UI/Button";
 import LocationPicker from "./GoogleMapsLocationPicker/LocationPicker";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
+import ChatBot from "../Technician/Home/ChatBot";
 
 const Register = () => {
   const [city, setCity] = useState<string>("");
@@ -15,6 +17,7 @@ const Register = () => {
   const [longitude, setLongitude] = useState(38.7628819);
 
   const [regiserTranfromer, { isLoading }] = useRegisterTransformerMutation();
+  const router = useRouter();
 
   const registerTranformer = async () => {
     if (city && streetAddress) {
@@ -29,6 +32,7 @@ const Register = () => {
           longitude,
         });
         toast.success("Transormer registered successfully.");
+        router.push("/home");
       } catch (error) {
         toast.error("Error registering transformer!");
       }
@@ -57,7 +61,7 @@ const Register = () => {
           <input
             id="city"
             placeholder="Write the city where the transform locate"
-            className="w-full p-4 focus:outline-none bg-gray-100 rounded-xl "
+            className="mt-2 bg-gray-100 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
             onChange={(e) => handleCity(e)}
           />
         </div>
@@ -66,7 +70,7 @@ const Register = () => {
           <input
             id="street"
             placeholder="Write the street address"
-            className="w-full p-2 bg-gray-100 focus:outline-none rounded-xl"
+            className="mt-2 bg-gray-100 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
             onChange={(e) => handleStreetAdddress(e)}
           />
         </div>
@@ -75,7 +79,7 @@ const Register = () => {
           <input
             id="serial"
             placeholder="Write the serial number of the tranformer"
-            className="w-full p-2 focus:outline-none bg-gray-100 rounded-xl"
+            className="mt-2 bg-gray-100 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
             onChange={(e) => handleSerialNumber(e)}
           />
         </div>
@@ -84,7 +88,7 @@ const Register = () => {
           <input
             id="sensor"
             placeholder="write the sensor id of the transformer"
-            className="w-full p-2 bg-gray-100 focus:outline-none rounded-xl"
+            className="mt-2 bg-gray-100 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
             onChange={(e) => handleSensorId(e)}
           />
         </div>
@@ -105,7 +109,9 @@ const Register = () => {
           isLoading={isLoading}
         />
       </div>
-      <div className="bg-yellow-100 min-h-full w-96"></div>
+      <div className="w-[30%] bg-[#F6F2DD] flex flex-col items-center gap-4 pb-20">
+        <ChatBot />
+      </div>
       <ToastContainer />
     </div>
   );
