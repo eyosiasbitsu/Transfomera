@@ -103,10 +103,11 @@ const deleteTransformerById  = async (req, res) => {
  
 const updateTransformerById = async (req, res) => {
     try {
-        const transformerId = req.params.id;
+        const sensorId = req.params.id;
         const updateParams = req.body;
-    
-        const transformer = await Transformer.findById(transformerId);
+
+        const transformer = await Transformer.find({ sensorId: sensorId });
+        
         if (!transformer) {
           return res.status(404).json({ message: 'Transformer not found' });
         }
