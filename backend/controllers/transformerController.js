@@ -106,8 +106,8 @@ const updateTransformerById = async (req, res) => {
         const sensorId = req.params.id;
         const updateParams = req.body;
 
-        const transformer = await Transformer.find({ sensorId: sensorId });
-        
+        const transformer = await Transformer.findOne({ sensorId: sensorId });
+
         if (!transformer) {
           return res.status(404).json({ message: 'Transformer not found' });
         }
