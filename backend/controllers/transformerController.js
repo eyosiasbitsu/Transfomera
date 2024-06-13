@@ -52,7 +52,7 @@ const registerTransformer = async (req, res) => {
             longitude,
             sensorId,
             serialNumber,
-            healthPercentile: null, // Health percentile is not provided during registration
+            healthPercentile: 100, // Health percentile is not provided during registration
             installationDate: new Date(),
             assignedTechnician: null, // Initially unassigned
             registeredBy: req.user._id, // Use the _id of the logged-in user
