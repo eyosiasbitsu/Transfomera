@@ -12,6 +12,6 @@ router.post('/:id', addSensorData);
 router.post('/', authMiddleware, registerTransformer);
 router.get('/:id', authMiddleware, getTransformerById);
 router.delete('/:id', authMiddleware, deleteTransformerById);
-router.put('/:id', authMiddleware, updateTransformerById);
+router.put('/:id',  updateTransformerById);
 router.get('/', authMiddleware, getTransformers);
 module.exports = router;
