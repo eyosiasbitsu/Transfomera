@@ -8,6 +8,9 @@ const sensorDataSchema = new mongoose.Schema({
   current: String,
   oilLevel: String,
   date: Date,
+  idd: {
+    type: String,
+  },
   transformerId: {
     type: ObjectId,
     ref: 'Transformer', // Reference to the Transformer model
