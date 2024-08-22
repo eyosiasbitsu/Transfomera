@@ -9,6 +9,7 @@ backend/node_modules/
 
 chatbot/node_modules/
 
+.env
 # dependencies
 /.pnp
 .pnp.js
