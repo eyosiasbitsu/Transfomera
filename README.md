@@ -2,9 +2,7 @@
 
 Welcome to Transformera! This project aims to provide a seamless platform for managing and tracking transformers, technicians, and administrative tasks within an organization.
 
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](#screenshots)
+## About Transformera
 
 Transformera is designed to streamline the management of transformers, offering interfaces for different user roles such as technicians and administrators. The project includes functionalities for registering transformers, managing technician profiles, and overseeing the maintenance and operations related to transformers.
 
