@@ -17,34 +17,34 @@ Transformera is designed to streamline the management of transformers, offering 
 ## Screenshots
 
 ### Sign In Page
-![Sign In Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/admin_home.png?raw=true)
+![Sign In Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/signup.png?raw=true)
 
 ### Technician Home Page
-[![Technician Home Page][technician-home-screenshot]](#screenshots)
+![Technician Home Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/technician_home.png?raw=true)
 
 ### Transformer Registration Page
-[![Transformer Registration Page][transformer-registration-screenshot]](#screenshots)
+[Transformer Registration Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/register_transformer.png?raw=true)
 
 ### Map Search Page
-[![Map Search Page][map-search-screenshot]](#screenshots)
+![Map Search Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/map_feature.png?raw=true)
 
 ### Technician Profile Page
-[![Technician Profile Page][technician-profile-screenshot]](#screenshots)
+![Technician Profile Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/technician_profile.png?raw=true)
 
 ### Admin Home Page
-[![Admin Home Page][admin-home-screenshot]](#screenshots)
+![Admin Home Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/admin_home.png?raw=true)
 
 ### Technician Registration Page
-[![Technician Registration Page][technician-registration-screenshot]](#screenshots)
+![Technician Registration Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/register_technician.png?raw=true)
 
 ### Admin Profile Page
-[![Admin Profile Page][admin-profile-screenshot]](#screenshots)
+![Admin Profile Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/admin_profile.png?raw=true)
 
 ### Transformer Detail Page
-[![Transformer Detail Page][transformer-detail-screenshot]](#screenshots)
+![Transformer Detail Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/transformer_detail.png?raw=true)
 
 ### Information Assistant Chatbot
-[![Information Assistant Chatbot][chatbot-screenshot]](#screenshots)
+![Information Assistant Chatbot](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/chatbot.png?raw=true)
 
 ## Built With
 
