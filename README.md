@@ -100,9 +100,9 @@ Contributions are welcome and greatly appreciated! To contribute:
 
 5. Open a Pull Request.
 
-### Top contributors:
+### Contributors:
 
-<a href="https://github.com/othneildrew/Best-README-Template/graphs/contributors">
+<a href="https://github.com/eyosiasbitsu/Transfomera/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
 </a>
 
