@@ -56,7 +56,7 @@ The project is built using the following technologies:
 * [![Node.js][Node.js]][Node-url]
 * [![Express.js][Express.js]][Express-url]
 * [![MongoDB][MongoDB]][MongoDB-url]
-
+* ![OpenAI API](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 ## Usage
 
 The Transformera platform can be used to manage transformers within a company. Each user role has access to specific functionalities, as detailed below:
