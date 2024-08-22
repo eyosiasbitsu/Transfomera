@@ -103,10 +103,8 @@ Contributions are welcome and greatly appreciated! To contribute:
 ### Contributors:
 
 <a href="https://github.com/eyosiasbitsu/Transfomera/graphs/contributors">
-  See Contributor list
+  See Contributor Stat
 </a>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
@@ -120,8 +118,6 @@ Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.c
 
 Project Link: [https://github.com/your_username/Transformera](https://github.com/your_username/Transformera)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Acknowledgments
 
 Special thanks to the following resources:
@@ -134,8 +130,6 @@ Special thanks to the following resources:
 - [GitHub Pages](https://pages.github.com)
 - [Font Awesome](https://fontawesome.com)
 - [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
