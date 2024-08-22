@@ -103,7 +103,6 @@ Contributions are welcome and greatly appreciated! To contribute:
 ### Contributors:
 
 <a href="https://github.com/eyosiasbitsu/Transfomera/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
