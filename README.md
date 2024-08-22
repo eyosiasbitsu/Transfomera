@@ -63,21 +63,6 @@ The project is built using the following technologies:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Installation
-
-1. Clone the repository:  
-   **git clone https://github.com/github_username/Transformera.git**
-
-2. Navigate to the project directory:  
-   **cd Transformera**
-
-3. Install the necessary NPM packages:  
-   **npm install**
-
-4. Set up the environment variables by creating a `.env` file and adding the required variables.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Usage
 
 The Transformera platform can be used to manage transformers within a company. Each user role has access to specific functionalities, as detailed below:
