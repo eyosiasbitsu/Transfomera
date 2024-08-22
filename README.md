@@ -105,9 +105,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Fetsum Abyu - [Leetcode](https://leetcode.com/u/eyosiasbitsu/)
 
-Project Link: [https://github.com/your_username/Transformera](https://github.com/your_username/Transformera)
+Project Link: [https://github.com/eyosiasbitsu/Transfomera](https://github.com/eyosiasbitsu/Transfomera)
 
 ## Acknowledgments
 
