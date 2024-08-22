@@ -17,7 +17,7 @@ Transformera is designed to streamline the management of transformers, offering 
 ## Screenshots
 
 ### Sign In Page
-![Sign In Page](https://drive.google.com/drive/folders/1G2O06BLHopgGyCbmi75JvqoKqkl1VGZA?usp=sharing)
+![Sign In Page](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/admin_home.png?raw=true)
 
 ### Technician Home Page
 [![Technician Home Page][technician-home-screenshot]](#screenshots)
