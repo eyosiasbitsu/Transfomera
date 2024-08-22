@@ -103,7 +103,7 @@ Contributions are welcome and greatly appreciated! To contribute:
 ### Contributors:
 
 <a href="https://github.com/eyosiasbitsu/Transfomera/graphs/contributors">
-  <h4>See Contributor list</h4>
+  See Contributor list
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
