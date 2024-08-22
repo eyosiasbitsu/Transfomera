@@ -8,6 +8,18 @@ Welcome to Transformera! This project aims to provide a seamless platform for ma
 
 Transformera is designed to streamline the management of transformers, offering interfaces for different user roles such as technicians and administrators. The project includes functionalities for registering transformers, managing technician profiles, and overseeing the maintenance and operations related to transformers.
 
+## Built With
+
+The project is built using the following technologies:
+
+* [![Next][Next.js]][Next-url]
+* [![React][React.js]][React-url]
+* [![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
+* [![Node.js][Node.js]][Node-url]
+* [![Express.js][Express.js]][Express-url]
+* [![MongoDB][MongoDB]][MongoDB-url]
+* ![OpenAI API](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+
 ### Key Features:
 - **User Roles:** Separate interfaces for technicians and administrators, each with role-specific features.
 - **Transformer Management:** Register, update, and track the status of transformers.
@@ -48,17 +60,6 @@ Transformera is designed to streamline the management of transformers, offering 
 ### Information Assistant Chatbot
 ![Information Assistant Chatbot](https://github.com/eyosiasbitsu/Transfomera/blob/main/images/chatbot.png?raw=true)
 
-## Built With
-
-The project is built using the following technologies:
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
-* [![Node.js][Node.js]][Node-url]
-* [![Express.js][Express.js]][Express-url]
-* [![MongoDB][MongoDB]][MongoDB-url]
-* ![OpenAI API](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 ## Usage
 
 The Transformera platform can be used to manage transformers within a company. Each user role has access to specific functionalities, as detailed below:
