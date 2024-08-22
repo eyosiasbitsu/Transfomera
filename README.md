@@ -14,8 +14,6 @@ Transformera is designed to streamline the management of transformers, offering 
 - **Information Assistant Chatbot:** A chatbot integrated into the platform that provides technicians with real-time assistance and guidance for fixing or maintaining transformers in the field. Technicians can interact with the chatbot to troubleshoot issues, get step-by-step instructions, and access relevant documentation.
 - **Deployment:** Backend deployed on Render, and frontend deployed on Vercel for reliable and scalable performance.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Screenshots
 
 ### Sign In Page
@@ -48,8 +46,6 @@ Transformera is designed to streamline the management of transformers, offering 
 ### Information Assistant Chatbot
 [![Information Assistant Chatbot][chatbot-screenshot]](#screenshots)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Built With
 
 The project is built using the following technologies:
@@ -61,8 +57,6 @@ The project is built using the following technologies:
 * [![Express.js][Express.js]][Express-url]
 * [![MongoDB][MongoDB]][MongoDB-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Usage
 
 The Transformera platform can be used to manage transformers within a company. Each user role has access to specific functionalities, as detailed below:
@@ -72,8 +66,6 @@ The Transformera platform can be used to manage transformers within a company. E
 
 _For more detailed usage instructions, please refer to the project documentation._
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Roadmap
 
 - [x] User Authentication
@@ -81,8 +73,6 @@ _For more detailed usage instructions, please refer to the project documentation
 - [x] Technician Profile Management
 - [ ] Multi-language Support
 - [ ] Enhanced Reporting Features
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing
 
@@ -109,8 +99,6 @@ Contributions are welcome and greatly appreciated! To contribute:
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
 
