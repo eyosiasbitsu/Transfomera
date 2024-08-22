@@ -9,9 +9,9 @@ let conversationHistory = [
   { 
     role: "system", 
     content: initialText
-  },
+  }
 ];
-
+" Thank You! { k:v fields of the bidding object} "
 const handleMessage = async (req, res) => {
   const userMessage = req.body.message;
 
