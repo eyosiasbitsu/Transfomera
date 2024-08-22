@@ -17,7 +17,7 @@ Transformera is designed to streamline the management of transformers, offering 
 ## Screenshots
 
 ### Sign In Page
-[![Sign In Page][signin-screenshot]](#screenshots)
+[![Sign In Page][signin-screenshot]](#signin-screenshot)
 
 ### Technician Home Page
 [![Technician Home Page][technician-home-screenshot]](#screenshots)
